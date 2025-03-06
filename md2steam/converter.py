@@ -43,7 +43,10 @@ def markdown_to_steam_bbcode(markdown_text: str) -> str:
         first_char = raw_line.lstrip(' ')[:1]
         if list_stack:
             if not re.match(r'^\s*([-+*]|\d+\.)\s+', raw_line):
-                if not (first_char == '>' and leading_spaces > list_stack[-1][1]):
+                if not (
+                        first_char == '>' and
+                        leading_spaces > list_stack[-1][1]
+                ):
                     while list_stack:
                         list_type, _ = list_stack.pop()
                         result_lines.append(
@@ -112,8 +115,8 @@ def markdown_to_steam_bbcode(markdown_text: str) -> str:
                     if list_stack and list_stack[-1][1] == indent_spaces:
                         if list_stack[-1][0] != list_type:
                             prev_type, _ = list_stack.pop()
-                            result_lines.append(
-                                f"[/{'olist' if prev_type == 'ol' else 'list'}]")
+                            list_tag = 'olist' if prev_type == 'ol' else 'list'
+                            result_lines.append(f"[/{list_tag}]")
                             list_stack.append((list_type, indent_spaces))
                             result_lines.append(
                                 "[olist]" if list_type == "ol" else "[list]")
