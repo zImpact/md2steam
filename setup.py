@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="md2steam",
-    version="1.0.0",
+    version="1.0.1",
     author="Andrey Kataev",
     author_email="kata3v.andrey@yandex.ru",
     description="Markdown to Steam BBCode converter",
