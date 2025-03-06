@@ -33,7 +33,9 @@ def convert_images(text: str) -> str:
     Converts Markdown images of the form ![alt](URL) into [img]URL[/img].
     The title in quotes is ignored.
     """
-    return re.sub(r'!\[.*?\]\(([^)\s"]+)(?:\s+"[^"]*")?\)', r"[img]\1[/img]", text)
+    return re.sub(
+        r'!\[.*?\]\(([^)\s"]+)(?:\s+"[^"]*")?\)', r"[img]\1[/img]", text
+    )
 
 
 def convert_links(text: str) -> str:

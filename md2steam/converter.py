@@ -32,7 +32,8 @@ def markdown_to_steam_bbcode(markdown_text: str) -> str:
             while list_stack:
                 list_type, _ = list_stack.pop()
                 result_lines.append(
-                    f"[/{'olist' if list_type == 'ol' else 'list'}]")
+                    f"[/{'olist' if list_type == 'ol' else 'list'}]"
+                )
             if current_quote_level > 0:
                 result_lines.append("[/quote]" * current_quote_level)
                 current_quote_level = 0
@@ -104,12 +105,14 @@ def markdown_to_steam_bbcode(markdown_text: str) -> str:
             if not list_stack:
                 list_stack.append((list_type, indent_spaces))
                 result_lines.append(
-                    "[olist]" if list_type == "ol" else "[list]")
+                    "[olist]" if list_type == "ol" else "[list]"
+                )
             else:
                 if indent_spaces > list_stack[-1][1]:
                     list_stack.append((list_type, indent_spaces))
                     result_lines.append(
-                        "[olist]" if list_type == "ol" else "[list]")
+                        "[olist]" if list_type == "ol" else "[list]"
+                    )
                 elif indent_spaces < list_stack[-1][1]:
                     while list_stack and indent_spaces < list_stack[-1][1]:
                         prev_type, _ = list_stack.pop()
