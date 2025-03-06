@@ -1,5 +1,5 @@
 import re
-from inline_converter import convert_inline
+from .inline_converter import convert_inline
 from typing import List, Tuple
 
 
